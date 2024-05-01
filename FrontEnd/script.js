@@ -21,4 +21,26 @@ async function get_projects() {
   }
 }
 
+async function get_categories() {
+  const response = await fetch("http://localhost:5678/api/categories");
+  const categories = await response.json();
+  console.log(categories);
+
+  const filter = document.querySelector(".filter");
+
+  const all_element = document.createElement("button");
+  all_element.innerHTML = "Tous";
+  all_element.classList = "button button_selected";
+
+  filter.appendChild(all_element);
+  for (i in categories) {
+    const button_element = document.createElement("button");
+    button_element.innerHTML = categories[i].name;
+    button_element.classList = "button button_unselected";
+
+    filter.appendChild(button_element);
+  }
+}
+
 get_projects();
+get_categories();
