@@ -2,9 +2,19 @@ async function get_projects() {
   const response = await fetch("http://localhost:5678/api/works");
   const projects = await response.json();
   console.log(projects);
+  return projects;
+}
 
+async function display_projects(id_category) {
+  console.log(id_category);
+  let projects = await get_projects();
+  if (id_category != undefined) {
+    projects = projects.filter(function (project) {
+      return project.categoryId == id_category;
+    });
+  }
   const gallery = document.querySelector(".gallery");
-
+  gallery.innerHTML = "";
   for (i in projects) {
     const figure_element = document.createElement("figure");
 
@@ -26,8 +36,11 @@ let category_selected = 0;
 async function get_category() {
   const response = await fetch("http://localhost:5678/api/categories");
   const categories = await response.json();
+  return categories;
   console.log(categories);
-
+}
+async function display_categories() {
+  const categories = await get_category();
   const filter = document.querySelector(".filter");
 
   const all_element = document.createElement("button");
@@ -42,14 +55,13 @@ async function get_category() {
     button_element.id = categories[i].id;
     button_element.classList = "button button_unselected";
 
-    button_element.addEventListener("click", function () {
-      category_selected = button_element.id;
-      console.log(category_selected);
+    button_element.addEventListener("click", async function () {
+      display_projects(button_element.id);
     });
 
     filter.appendChild(button_element);
   }
 }
 
-get_projects();
-get_category();
+display_projects();
+display_categories();
