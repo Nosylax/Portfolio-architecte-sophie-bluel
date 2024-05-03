@@ -21,7 +21,9 @@ async function get_projects() {
   }
 }
 
-async function get_categories() {
+let category_selected = 0;
+
+async function get_category() {
   const response = await fetch("http://localhost:5678/api/categories");
   const categories = await response.json();
   console.log(categories);
@@ -33,14 +35,21 @@ async function get_categories() {
   all_element.classList = "button button_selected";
 
   filter.appendChild(all_element);
+
   for (i in categories) {
     const button_element = document.createElement("button");
     button_element.innerHTML = categories[i].name;
+    button_element.id = categories[i].id;
     button_element.classList = "button button_unselected";
+
+    button_element.addEventListener("click", function () {
+      category_selected = button_element.id;
+      console.log(category_selected);
+    });
 
     filter.appendChild(button_element);
   }
 }
 
 get_projects();
-get_categories();
+get_category();
