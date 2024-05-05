@@ -1,7 +1,7 @@
 async function get_projects() {
   const response = await fetch("http://localhost:5678/api/works");
   const projects = await response.json();
-  console.log(projects);
+
   return projects;
 }
 
@@ -13,6 +13,7 @@ async function display_projects(id_category) {
       return project.categoryId == id_category;
     });
   }
+  console.log(projects);
   const gallery = document.querySelector(".gallery");
   gallery.innerHTML = "";
   for (i in projects) {
@@ -36,8 +37,8 @@ let category_selected = 0;
 async function get_category() {
   const response = await fetch("http://localhost:5678/api/categories");
   const categories = await response.json();
-  return categories;
   console.log(categories);
+  return categories;
 }
 async function display_categories() {
   const categories = await get_category();
@@ -46,6 +47,10 @@ async function display_categories() {
   const all_element = document.createElement("button");
   all_element.innerHTML = "Tous";
   all_element.classList = "button button_selected";
+
+  all_element.addEventListener("click", async function () {
+    await display_projects();
+  });
 
   filter.appendChild(all_element);
 
@@ -56,7 +61,8 @@ async function display_categories() {
     button_element.classList = "button button_unselected";
 
     button_element.addEventListener("click", async function () {
-      display_projects(button_element.id);
+      await display_projects(button_element.id);
+      button_element.classList = "button button_selected";
     });
 
     filter.appendChild(button_element);
