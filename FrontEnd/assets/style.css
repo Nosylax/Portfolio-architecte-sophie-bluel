@@ -224,7 +224,7 @@ li:hover {
   background-color: white;
 }
 
-.button_selected:active {
+.button_selected {
   background-color: #1d6154;
   color: white;
 }

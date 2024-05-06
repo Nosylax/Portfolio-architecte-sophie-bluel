@@ -50,6 +50,7 @@ async function display_categories() {
 
   all_element.addEventListener("click", async function () {
     await display_projects();
+    update_button_selection(0);
   });
 
   filter.appendChild(all_element);
@@ -58,15 +59,23 @@ async function display_categories() {
     const button_element = document.createElement("button");
     button_element.innerHTML = categories[i].name;
     button_element.id = categories[i].id;
-    button_element.classList = "button";
+    button_element.classList.add("button");
 
     button_element.addEventListener("click", async function () {
       await display_projects(button_element.id);
-      button_element.classList = "button button_selected";
+      update_button_selection(button_element.id);
     });
 
     filter.appendChild(button_element);
   }
+}
+
+function update_button_selection(position) {
+  const buttons = document.querySelectorAll(".button");
+  document
+    .querySelector(".button_selected")
+    .classList.remove("button_selected");
+  buttons[position].classList.add("button_selected");
 }
 
 display_projects();
