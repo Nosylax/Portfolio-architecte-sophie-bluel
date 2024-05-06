@@ -220,13 +220,11 @@ li:hover {
   height: 37px;
   font-family: "Syne";
   cursor: pointer;
+  color: #1d6154;
+  background-color: white;
 }
 
-.button_unselected {
-  background-color: transparent;
-  color: #1d6154;
-}
-.button_selected {
+.button_selected:active {
   background-color: #1d6154;
   color: white;
 }

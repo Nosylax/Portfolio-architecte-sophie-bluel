@@ -58,7 +58,7 @@ async function display_categories() {
     const button_element = document.createElement("button");
     button_element.innerHTML = categories[i].name;
     button_element.id = categories[i].id;
-    button_element.classList = "button button_unselected";
+    button_element.classList = "button";
 
     button_element.addEventListener("click", async function () {
       await display_projects(button_element.id);
