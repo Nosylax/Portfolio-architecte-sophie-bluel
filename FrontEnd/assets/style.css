@@ -228,33 +228,33 @@ li:hover {
 .gallery img {
   width: 100%;
 }
-#contact {
+.forms {
   width: 50%;
   margin: auto;
 }
-#contact > * {
+.forms > * {
   text-align: center;
 }
-#contact h2 {
+.forms h2 {
   margin-bottom: 20px;
 }
-#contact form {
+.forms form {
   text-align: left;
   margin-top: 30px;
   display: flex;
   flex-direction: column;
 }
 
-#contact input {
+.forms input {
   height: 50px;
   font-size: 1.2em;
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label {
+.forms label {
   margin: 2em 0 1em 0;
 }
-#contact textarea {
+.forms textarea {
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }

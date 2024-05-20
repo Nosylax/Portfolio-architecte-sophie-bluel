@@ -8,7 +8,7 @@ async function get_projects() {
 async function display_projects(id_category) {
   console.log(id_category);
   let projects = await get_projects();
-  if (id_category != undefined) {
+  if (id_category != -1) {
     projects = projects.filter(function (project) {
       return project.categoryId == id_category;
     });
@@ -27,7 +27,7 @@ async function display_projects(id_category) {
     description_element.innerHTML = projects[i].title;
 
     figure_element.appendChild(image_element);
-    gallery.appendChild(figure_element);
+    gallery.appendChild(figure_element); // TODO :descendre d'une ligne
     figure_element.appendChild(description_element);
   }
 }
@@ -40,43 +40,49 @@ async function get_category() {
   console.log(categories);
   return categories;
 }
+
 async function display_categories() {
   const categories = await get_category();
+  categories.unshift({ id: -1, name: "Tous" });
   const filter = document.querySelector(".filter");
 
-  const all_element = document.createElement("button");
-  all_element.innerHTML = "Tous";
-  all_element.classList = "button button_selected";
+  // const all_element = document.createElement("button");
+  // all_element.innerHTML = "Tous";
+  // all_element.classList = "button button_selected";
 
-  all_element.addEventListener("click", async function () {
-    await display_projects();
-    update_button_selection(0);
-  });
+  // all_element.addEventListener("click", async function () {
+  //   await display_projects();
+  //   update_button_selection(0);
+  // });
 
-  filter.appendChild(all_element);
+  // filter.appendChild(all_element);
 
   for (i in categories) {
     const button_element = document.createElement("button");
     button_element.innerHTML = categories[i].name;
     button_element.id = categories[i].id;
+    if (i == 0) {
+      button_element.classList.add("button_selected");
+    }
     button_element.classList.add("button");
 
-    button_element.addEventListener("click", async function () {
+    button_element.addEventListener("click", async function (event) {
+      console.log(event);
       await display_projects(button_element.id);
-      update_button_selection(button_element.id);
+      update_button_selection(event);
     });
 
     filter.appendChild(button_element);
   }
 }
 
-function update_button_selection(position) {
+function update_button_selection(event) {
   const buttons = document.querySelectorAll(".button");
   document
     .querySelector(".button_selected")
     .classList.remove("button_selected");
-  buttons[position].classList.add("button_selected");
+  event.target.classList.add("button_selected");
 }
 
-display_projects();
+display_projects(-1);
 display_categories();
