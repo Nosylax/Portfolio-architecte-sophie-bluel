@@ -13,15 +13,15 @@ function login() {
     },
   }).then(async (response) => {
     console.log(response);
+    const error_message = document.querySelector(".error_message");
     if (response.ok) {
-      console.log("succès");
-
+      error_message.style.visibility = "hidden";
       let json = await response.json();
-      console.log(json.token);
       window.localStorage.setItem("token", json.token);
       window.location.replace("http://127.0.0.1:5500/FrontEnd/index.html");
     } else {
       console.error("Erreur lors de la connexion.");
+      error_message.style.visibility = "visible";
     }
   });
 }

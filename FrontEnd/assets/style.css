@@ -299,3 +299,11 @@ a {
   text-decoration: none;
   color: #3d3d3d;
 }
+
+.error_message {
+  margin-top: 20px;
+  color: red;
+  display: flex;
+  justify-content: center;
+  visibility: hidden;
+}
