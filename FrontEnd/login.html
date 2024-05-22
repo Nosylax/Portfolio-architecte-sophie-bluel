@@ -29,12 +29,22 @@
     <main>
       <section class="forms">
         <h2>Log In</h2>
-        <form class="login_forms">
+        <form class="login_forms" id="login_forms">
           <label for="email">email</label>
-          <input type="email" name="email" id="email" />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Entrez votre e-mail"
+          />
           <label for="password">Mot de passe</label>
-          <input type="text" name="password" id="password" />
-          <input type="submit" value="Se connecter" />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Entrez votre mot de passe"
+          />
+          <input type="submit" id="connect_button" value="Se connecter" />
         </form>
         <div>Mot de passe oublié</div>
       </section>

@@ -1,35 +1,33 @@
 function login() {
-  event.preventDefault();
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+  const email_value = document.getElementById("email").value;
+  const password_value = document.getElementById("password").value;
 
   fetch("http://localhost:5678/api/users/login", {
     method: "POST",
     body: JSON.stringify({
-      email: email,
-      password: password,
+      email: email_value,
+      password: password_value,
     }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
     },
-  })
-    .then((response) => {
-      console.log(response);
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      outputElement.textContent = JSON.stringify(data, null, 2);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+  }).then(async (response) => {
+    console.log(response);
+    if (response.ok) {
+      console.log("succès");
+
+      let json = await response.json();
+      console.log(json.token);
+      window.localStorage.setItem("token", json.token);
+      window.location.replace("http://127.0.0.1:5500/FrontEnd/index.html");
+    } else {
+      console.error("Erreur lors de la connexion.");
+    }
+  });
 }
 
-const login_forms = document.querySelector("submit");
-login_forms.addEventListener("click", function (event) {
+const connect_button = document.getElementById("connect_button");
+connect_button.addEventListener("click", function (event) {
   event.preventDefault();
   login();
 });
