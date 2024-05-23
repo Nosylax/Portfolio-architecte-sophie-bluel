@@ -307,3 +307,18 @@ a {
   justify-content: center;
   visibility: hidden;
 }
+
+.banner {
+  background-color: black;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
