@@ -322,3 +322,17 @@ a {
 .hidden {
   display: none;
 }
+
+.custom_button {
+  display: flex;
+  justify-content: center;
+}
+
+.custom {
+  color: black;
+  font-size: 14px;
+  padding: 10px;
+  margin-left: 31px;
+  font-family: "Work Sans";
+  font-weight: initial;
+}
