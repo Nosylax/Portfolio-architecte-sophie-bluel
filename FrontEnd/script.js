@@ -5,7 +5,7 @@ async function get_projects() {
   return projects;
 }
 
-async function display_projects(id_category) {
+async function display_projects(id_category, is_modal) {
   console.log(id_category);
   let projects = await get_projects();
   if (id_category != -1) {
@@ -14,7 +14,9 @@ async function display_projects(id_category) {
     });
   }
   console.log(projects);
-  const gallery = document.querySelector(".gallery");
+  const gallery = document.querySelector(
+    is_modal ? ".modal_gallery" : ".gallery"
+  );
 
   gallery.innerHTML = "";
   for (i in projects) {
@@ -29,8 +31,16 @@ async function display_projects(id_category) {
 
     figure_element.appendChild(image_element);
     gallery.appendChild(figure_element);
-    // TODO :descendre d'une ligne
-    figure_element.appendChild(description_element);
+
+    if (is_modal) {
+      const modal_image_trash = document.createElement("i");
+      modal_image_trash.classList.add("fa-solid", "fa-trash-can");
+      figure_element.appendChild(modal_image_trash);
+    } else {
+      const description_element = document.createElement("figcaption");
+      description_element.innerHTML = projects[i].title;
+      figure_element.appendChild(description_element);
+    }
   }
 }
 
@@ -86,5 +96,5 @@ function update_button_selection(event) {
   event.target.classList.add("button_selected");
 }
 
-display_projects(-1);
+display_projects(-1, false);
 display_categories();
