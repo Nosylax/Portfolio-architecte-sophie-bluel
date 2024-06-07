@@ -323,6 +323,11 @@ a {
   display: none;
 }
 
+.custom_block {
+  display: flex;
+  justify-content: center;
+}
+
 .custom_button {
   display: flex;
   justify-content: center;
@@ -335,4 +340,95 @@ a {
   margin-left: 31px;
   font-family: "Work Sans";
   font-weight: initial;
+  cursor: pointer;
+}
+
+.fa-pen-to-square {
+  padding-right: 10px;
+}
+
+.modal_container {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.modal_container.active {
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #333333d3;
+}
+
+.modal {
+  width: 95%;
+  max-width: 500px;
+  min-width: 300px;
+  padding: 30px;
+  background: #fff;
+  border-radius: 5px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: relative;
+}
+
+.modal_title {
+  font-size: 26px;
+  display: flex;
+  justify-content: center;
+  font-family: "Work Sans";
+}
+
+.close_modal {
+  border: none;
+  background: none;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-weight: bold;
+  font-size: large;
+}
+
+.modal_content {
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal_gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  padding-top: 46px;
+  padding-bottom: 68px;
+  padding-right: 105px;
+  grid-gap: 7%;
+}
+
+.modal_gallery figure img {
+  width: 76px;
+  height: 102px;
+}
+
+.modal_gallery .fa-trash-can {
+  position: absolute;
+  right: 6px;
+  top: 8px;
+  font-size: 9px;
+  color: white;
+  padding: 4px;
+  background-color: black;
+  border-radius: 3px;
+}
+
+.modal_gallery figure {
+  position: relative;
 }

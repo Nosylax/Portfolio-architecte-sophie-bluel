@@ -15,6 +15,7 @@ async function display_projects(id_category) {
   }
   console.log(projects);
   const gallery = document.querySelector(".gallery");
+
   gallery.innerHTML = "";
   for (i in projects) {
     const figure_element = document.createElement("figure");
@@ -27,7 +28,8 @@ async function display_projects(id_category) {
     description_element.innerHTML = projects[i].title;
 
     figure_element.appendChild(image_element);
-    gallery.appendChild(figure_element); // TODO :descendre d'une ligne
+    gallery.appendChild(figure_element);
+    // TODO :descendre d'une ligne
     figure_element.appendChild(description_element);
   }
 }
