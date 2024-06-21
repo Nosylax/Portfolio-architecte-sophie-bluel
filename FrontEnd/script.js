@@ -35,6 +35,13 @@ async function display_projects(id_category, is_modal) {
     if (is_modal) {
       const modal_image_trash = document.createElement("i");
       modal_image_trash.classList.add("fa-solid", "fa-trash-can");
+      modal_image_trash.id = projects[i].id;
+      modal_image_trash.addEventListener("click", function (event) {
+        window.localStorage.removeItem("figure");
+        delete_project(modal_image_trash.id);
+
+        console.log(modal_image_trash.id);
+      });
       figure_element.appendChild(modal_image_trash);
     } else {
       const description_element = document.createElement("figcaption");
@@ -57,17 +64,6 @@ async function display_categories() {
   const categories = await get_category();
   categories.unshift({ id: -1, name: "Tous" });
   const filter = document.querySelector(".filter");
-
-  // const all_element = document.createElement("button");
-  // all_element.innerHTML = "Tous";
-  // all_element.classList = "button button_selected";
-
-  // all_element.addEventListener("click", async function () {
-  //   await display_projects();
-  //   update_button_selection(0);
-  // });
-
-  // filter.appendChild(all_element);
 
   for (i in categories) {
     const button_element = document.createElement("button");

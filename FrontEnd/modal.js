@@ -15,3 +15,64 @@ function toggle_modal() {
 
 get_projects();
 display_projects(-1, true);
+
+async function delete_project(id) {
+  const delete_project = await fetch("http://localhost:5678/api/works/" + id, {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + window.localStorage.getItem("token"),
+    },
+  });
+  if (delete_project.status == 204) {
+    display_projects(-1, true);
+    display_projects(-1, false);
+  }
+}
+
+async function hydrate_select_category() {
+  const select = document.getElementById("categories");
+  const categories = await get_category();
+  for (let category of categories) {
+    const option = new Option(category.name, category.id);
+    select.appendChild(option);
+  }
+}
+hydrate_select_category();
+
+async function add_picture() {}
+
+function previewImage() {
+  const file_input = document.getElementById("file-upload");
+  const file = file_input.files[0];
+  const image_preview_container = document.getElementById(
+    "previewImageContainer"
+  );
+
+  if (file.type.match("image.*")) {
+    const reader = new FileReader();
+
+    reader.addEventListener("load", function (event) {
+      const imageUrl = event.target.result;
+      const image = new Image();
+
+      image.addEventListener("load", function () {
+        image_preview_container.innerHTML = "";
+        image_preview_container.appendChild(image);
+      });
+
+      image.src = imageUrl;
+      image.style.width = "129px";
+      image.style.height = "169px";
+    });
+
+    reader.readAsDataURL(file);
+  }
+}
+
+const button_add_picture = document.getElementById("file-upload");
+const icone = document.querySelector(".fa-image");
+button_add_picture.addEventListener("change", function () {
+  previewImage();
+
+  document.querySelector(".upload_button_container").style.display = "none";
+});

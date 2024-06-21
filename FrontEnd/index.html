@@ -67,15 +67,72 @@
           <div class="modal_trigger custom">
             <i class="fa-regular fa-pen-to-square"></i>modifier
           </div>
-          <div class="modal_container overlay">
+
+          <!-- <div class="modal_container overlay">
             <div class="modal">
-              <button class="close_modal modal_trigger">x</button>
+              <button class="close_modal modal_trigger">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
               <div class="modal_content">
                 <p class="modal_title">Galerie photo</p>
                 <div class="modal_gallery"></div>
+                <div class="line"></div>
                 <button class="button button_selected">
                   Ajouter une photo
                 </button>
+              </div>
+            </div>
+          </div> -->
+
+          <div class="modal_container overlay">
+            <div class="modal">
+              <button class="back_modal modal_trigger">
+                <i class="fa-solid fa-arrow-left"></i>
+              </button>
+              <button class="close_modal modal_trigger">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+
+              <div class="modal_content">
+                <p class="modal_title">Ajout photo</p>
+                <section class="forms">
+                  <div class="add">
+                    <div id="previewImageContainer"></div>
+                    <div class="upload_button_container">
+                      <i class="fa-regular fa-image"></i>
+
+                      <label
+                        for="file-upload"
+                        class="button button_selected"
+                        id="add_photo_label"
+                      >
+                        + Ajouter photo
+                      </label>
+                      <input
+                        type="file"
+                        name="file"
+                        id="file-upload"
+                        accept=".jpg, .png"
+                      />
+                      <p>jpg, png : 4mo max</p>
+                    </div>
+                  </div>
+
+                  <form action="#" method="post">
+                    <label for="title">Titre</label>
+                    <input type="text" name="name" id="name" />
+
+                    <label for="categories">Catégories</label>
+                    <select name="categories" id="categories">
+                      <option value=""></option>
+                    </select>
+
+                    <div class="line"></div>
+                    <div class="button_submit_modal">
+                      <input type="submit" value="Valider" />
+                    </div>
+                  </form>
+                </section>
               </div>
             </div>
           </div>

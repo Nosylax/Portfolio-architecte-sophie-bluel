@@ -251,6 +251,7 @@ li:hover {
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
 .forms label {
   margin: 2em 0 1em 0;
 }
@@ -360,7 +361,6 @@ a {
 }
 
 .overlay {
-  position: absolute;
   width: 100%;
   height: 100%;
   background: #333333d3;
@@ -373,8 +373,7 @@ a {
   padding: 30px;
   background: #fff;
   border-radius: 5px;
-  position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   position: relative;
@@ -397,20 +396,31 @@ a {
   font-size: large;
 }
 
+.back_modal {
+  border: none;
+  background: none;
+  position: absolute;
+  left: 20px;
+  top: 10px;
+  font-weight: bold;
+  font-size: large;
+}
+
 .modal_content {
   justify-content: space-around;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 15px;
 }
 
 .modal_gallery {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  padding-top: 46px;
-  padding-bottom: 68px;
-  padding-right: 105px;
-  grid-gap: 7%;
+  grid-column-gap: 9px;
+  grid-row-gap: 29px;
+  margin-top: 46px;
+  margin-bottom: 68px;
 }
 
 .modal_gallery figure img {
@@ -421,7 +431,7 @@ a {
 .modal_gallery .fa-trash-can {
   position: absolute;
   right: 6px;
-  top: 8px;
+  top: 5px;
   font-size: 9px;
   color: white;
   padding: 4px;
@@ -431,4 +441,90 @@ a {
 
 .modal_gallery figure {
   position: relative;
+}
+
+.line {
+  background-color: #b3b3b3;
+  height: 1px;
+  width: 100%;
+  margin-bottom: 38px;
+}
+
+.forms select {
+  height: 50px;
+  font-size: 1.2em;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  margin-bottom: 47px;
+}
+
+.modal .forms {
+  width: 80%;
+}
+
+.modal .forms form {
+  margin-top: 0px;
+}
+
+.add {
+  background-color: #e8f1f6;
+  width: 100%;
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5%;
+}
+
+.modal .button_selected {
+  background-color: #cbd6dc;
+  color: #306685;
+  border: none;
+
+  font-family: "Work Sans";
+  font-weight: 900;
+  padding: 0px 30px;
+}
+
+.modal input[type="submit"] {
+  margin: 0px;
+  width: 237px;
+  background-color: #a7a7a7;
+  font-size: 14px;
+  height: 36px;
+}
+
+.fa-image {
+  font-size: 68px;
+  color: #b9c5cc;
+  margin-top: 13px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.add .button_selected {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.upload_button_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 0px;
+}
+
+.button_submit_modal {
+  display: flex;
+  justify-content: center;
 }
