@@ -96,34 +96,39 @@
               <div class="modal_content">
                 <p class="modal_title">Ajout photo</p>
                 <section class="forms">
-                  <div class="add">
-                    <div id="previewImageContainer"></div>
-                    <div class="upload_button_container">
-                      <i class="fa-regular fa-image"></i>
+                  <form
+                    action="#"
+                    method="post"
+                    id="modal_add_image"
+                    name="modal_add_image"
+                  >
+                    <div class="add">
+                      <div id="previewImageContainer"></div>
+                      <div class="upload_button_container">
+                        <i class="fa-regular fa-image"></i>
 
-                      <label
-                        for="file-upload"
-                        class="button button_selected"
-                        id="add_photo_label"
-                      >
-                        + Ajouter photo
-                      </label>
-                      <input
-                        type="file"
-                        name="file"
-                        id="file-upload"
-                        accept=".jpg, .png"
-                      />
-                      <p>jpg, png : 4mo max</p>
+                        <label
+                          for="file-upload"
+                          class="button button_selected"
+                          id="add_photo_label"
+                        >
+                          + Ajouter photo
+                        </label>
+                        <input
+                          type="file"
+                          name="image"
+                          id="file-upload"
+                          accept=".jpg, .png"
+                        />
+                        <p>jpg, png : 4mo max</p>
+                      </div>
                     </div>
-                  </div>
 
-                  <form action="#" method="post">
                     <label for="title">Titre</label>
-                    <input type="text" name="name" id="name" />
+                    <input type="text" name="title" id="title" />
 
                     <label for="categories">Catégories</label>
-                    <select name="categories" id="categories">
+                    <select name="category" id="categories">
                       <option value=""></option>
                     </select>
 
@@ -132,6 +137,7 @@
                       <input type="submit" value="Valider" />
                     </div>
                   </form>
+                  <div id="output"></div>
                 </section>
               </div>
             </div>

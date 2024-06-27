@@ -76,3 +76,34 @@ button_add_picture.addEventListener("change", function () {
 
   document.querySelector(".upload_button_container").style.display = "none";
 });
+
+const form = document.forms.namedItem("modal_add_image");
+
+form.addEventListener(
+  "submit",
+  async (event) => {
+    event.preventDefault();
+    const output = document.querySelector("#output");
+    const formData = new FormData(form);
+    const request = await fetch("http://localhost:5678/api/works/", {
+      method: "POST",
+      body: formData,
+      headers: {
+        Authorization: "Bearer " + window.localStorage.getItem("token"),
+      },
+    });
+
+    console.log(window.localStorage.getItem("token"));
+
+    if (request.status === 201) {
+      output.innerHTML = "Fichier téléversé !";
+      display_projects(-1, true);
+      display_projects(-1, false);
+      event.target.reset();
+    } else {
+      output.innerHTML =
+        "Erreur lors de la tentative de téléversement du fichier.";
+    }
+  },
+  false
+);

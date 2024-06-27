@@ -18,7 +18,7 @@ function login() {
       error_message.style.visibility = "hidden";
       let json = await response.json();
       window.localStorage.setItem("token", json.token);
-      window.location.replace("http://127.0.0.1:5500/FrontEnd/index.html");
+      window.location.replace("/index.html");
     } else {
       console.error("Erreur lors de la connexion.");
       error_message.style.visibility = "visible";
