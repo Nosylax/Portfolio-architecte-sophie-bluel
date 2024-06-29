@@ -68,7 +68,7 @@
             <i class="fa-regular fa-pen-to-square"></i>modifier
           </div>
 
-          <!-- <div class="modal_container overlay">
+          <div class="modal_container overlay" id="delete_modal">
             <div class="modal">
               <button class="close_modal modal_trigger">
                 <i class="fa-solid fa-xmark"></i>
@@ -77,14 +77,14 @@
                 <p class="modal_title">Galerie photo</p>
                 <div class="modal_gallery"></div>
                 <div class="line"></div>
-                <button class="button button_selected">
+                <button class="button button_selected add_picture">
                   Ajouter une photo
                 </button>
               </div>
             </div>
-          </div> -->
+          </div>
 
-          <div class="modal_container overlay">
+          <div class="modal_container overlay" id="add_modal">
             <div class="modal">
               <button class="back_modal modal_trigger">
                 <i class="fa-solid fa-arrow-left"></i>
@@ -119,22 +119,27 @@
                           name="image"
                           id="file-upload"
                           accept=".jpg, .png"
+                          required
                         />
                         <p>jpg, png : 4mo max</p>
                       </div>
                     </div>
 
                     <label for="title">Titre</label>
-                    <input type="text" name="title" id="title" />
+                    <input type="text" name="title" id="title" required />
 
                     <label for="categories">Catégories</label>
-                    <select name="category" id="categories">
+                    <select name="category" id="categories" required>
                       <option value=""></option>
                     </select>
 
                     <div class="line"></div>
                     <div class="button_submit_modal">
-                      <input type="submit" value="Valider" />
+                      <input
+                        type="submit"
+                        value="Valider"
+                        class="submit_button_modal_unselected"
+                      />
                     </div>
                   </form>
                   <div id="output"></div>

@@ -264,12 +264,13 @@ input[type="submit"] {
   font-family: "Syne";
   font-weight: 700;
   color: white;
-  background-color: #1d6154;
-  margin: 2em auto;
-  width: 180px;
   text-align: center;
   border-radius: 60px;
+  margin: 0px;
+  width: 237px;
   cursor: pointer;
+  font-size: 14px;
+  height: 36px;
 }
 
 footer nav ul {
@@ -486,13 +487,13 @@ a {
   padding: 0px 30px;
 }
 
-.modal input[type="submit"] {
+/* .modal input[type="submit"] {
   margin: 0px;
   width: 237px;
   background-color: #a7a7a7;
   font-size: 14px;
   height: 36px;
-}
+} */
 
 .fa-image {
   font-size: 68px;
@@ -528,3 +529,19 @@ input[type="file"] {
   display: flex;
   justify-content: center;
 }
+
+.submit_button_modal_unselected {
+  background-color: #a7a7a7;
+}
+
+.submit_button_modal_selected {
+  background-color: #1d6154;
+}
+
+/* #delete_modal {
+  visibility: visible;
+}
+
+#add_modal {
+  visibility: hidden;
+} */

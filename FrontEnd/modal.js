@@ -39,7 +39,13 @@ async function hydrate_select_category() {
 }
 hydrate_select_category();
 
-async function add_picture() {}
+let next_modal = document.querySelector(".add_picture");
+let delete_modal = document.getElementById("delete_modal");
+let add_modal = document.getElementById("add_modal");
+next_modal.addEventListener("click", function () {
+  delete_modal.style.display = "none";
+  add_modal.style.display = "block";
+});
 
 function previewImage() {
   const file_input = document.getElementById("file-upload");
