@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <script src="script.js" defer></script>
-    <script src="admin.js" defer></script>
-    <script src="modal.js" defer></script>
+    <script src="script.js" async defer></script>
+    <script src="admin.js" async defer></script>
+    <script src="modal.js" async defer></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -64,7 +64,7 @@
       <section id="portfolio">
         <div class="custom_block">
           <h2 class="custom_button">Mes Projets</h2>
-          <div class="modal_trigger custom">
+          <div class="modal_trigger custom open_modal">
             <i class="fa-regular fa-pen-to-square"></i>modifier
           </div>
 
@@ -107,7 +107,7 @@
 
                         <label
                           for="file-upload"
-                          class="button button_selected"
+                          class="button button_add_picture"
                           id="add_photo_label"
                         >
                           + Ajouter photo
@@ -136,6 +136,7 @@
                       <input
                         type="submit"
                         value="Valider"
+                        id="submit_add"
                         class="submit_button_modal_unselected"
                       />
                     </div>
