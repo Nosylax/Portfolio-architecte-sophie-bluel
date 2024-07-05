@@ -86,9 +86,7 @@ async function display_categories() {
 
 function update_button_selection(event) {
   const buttons = document.querySelectorAll(".button");
-  document
-    .querySelector(".button_selected")
-    .classList.remove("button_selected");
+  buttons.forEach((button) => button.classList.remove("button_selected"));
   event.target.classList.add("button_selected");
 }
 
