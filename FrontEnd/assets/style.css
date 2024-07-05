@@ -260,15 +260,18 @@ li:hover {
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
+.forms div {
+  text-align: center;
+}
+
 input[type="submit"] {
   font-family: "Syne";
   font-weight: 700;
   color: white;
-  background-color: #1d6154;
+
   width: 179px;
   text-align: center;
   border-radius: 60px;
-  margin-left: 163px;
   cursor: pointer;
   font-size: 14px;
   height: 36px;
@@ -277,6 +280,12 @@ input[type="submit"] {
 
 .contact input[type="submit"] {
   margin-top: 40px;
+  background-color: #1d6154;
+}
+
+.log_in input[type="submit"] {
+  margin-left: 0px;
+  background-color: #1d6154;
 }
 
 footer nav ul {
