@@ -284,8 +284,8 @@ input[type="submit"] {
 }
 
 .log_in input[type="submit"] {
-  margin-left: 0px;
   background-color: #1d6154;
+  margin-top: 10px;
 }
 
 footer nav ul {
@@ -498,8 +498,8 @@ a {
 }
 
 .modal .button_selected {
-  background-color: #cbd6dc;
-  color: #306685;
+  background-color: #1d6154;
+  color: white;
   border: none;
 
   font-family: "Work Sans";
@@ -560,4 +560,12 @@ input[type="file"] {
 
 #add_modal {
   display: none;
+}
+
+.add_picture {
+  background-color: #1d6154;
+  color: white;
+  padding: 10px 50px;
+  font-size: 14px;
+  margin-bottom: 15px;
 }
