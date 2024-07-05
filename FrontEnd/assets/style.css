@@ -264,13 +264,19 @@ input[type="submit"] {
   font-family: "Syne";
   font-weight: 700;
   color: white;
+  background-color: #1d6154;
+  width: 179px;
   text-align: center;
   border-radius: 60px;
-  margin: 0px;
-  width: 237px;
+  margin-left: 163px;
   cursor: pointer;
   font-size: 14px;
   height: 36px;
+  margin-bottom: 28px;
+}
+
+.contact input[type="submit"] {
+  margin-top: 40px;
 }
 
 footer nav ul {
@@ -290,6 +296,11 @@ footer nav ul {
   cursor: pointer;
   color: #1d6154;
   background-color: transparent;
+}
+
+.forgotten_password {
+  text-decoration: underline;
+  text-align: center;
 }
 
 .button_selected {
@@ -538,10 +549,6 @@ input[type="file"] {
   background-color: #1d6154;
 }
 
-/* #delete_modal {
-  visibility: visible;
-}
-
 #add_modal {
-  visibility: hidden;
-} */
+  display: none;
+}

@@ -44,7 +44,7 @@ let delete_modal = document.getElementById("delete_modal");
 let add_modal = document.getElementById("add_modal");
 next_modal.addEventListener("click", function () {
   delete_modal.style.display = "none";
-  add_modal.style.display = "block";
+  add_modal.style.display = "unset";
 });
 
 function previewImage() {
@@ -106,10 +106,11 @@ form.addEventListener(
       display_projects(-1, true);
       display_projects(-1, false);
       event.target.reset();
-    } else {
-      output.innerHTML =
-        "Erreur lors de la tentative de téléversement du fichier.";
     }
+    // else {
+    //   output.innerHTML =
+    //     "Erreur lors de la tentative de téléversement du fichier.";
+    // }
   },
   false
 );
