@@ -114,6 +114,7 @@ const upload_button_container = document.querySelector(
 );
 button_add_picture.addEventListener("change", function () {
   previewImage();
+  verifierChampsRequis();
   upload_button_container.classList.add("hidde");
 });
 
@@ -142,7 +143,6 @@ form.addEventListener(
       event.target.reset();
       resetImagePreview();
       verifierChampsRequis();
-      is_champ3_completed = false;
     }
   },
   false
@@ -159,22 +159,23 @@ function resetImagePreview() {
   }
 }
 
-const champ1 = document.getElementById("title");
-const champ2 = document.getElementById("categories");
-let is_champ3_completed = false;
-
-const boutonSubmit = document.getElementById("submit_add");
-
-champ1.addEventListener("input", verifierChampsRequis);
-champ2.addEventListener("input", verifierChampsRequis);
-
 function verifierChampsRequis() {
-  const champsRemplis =
-    champ1.value !== "" && champ2.value !== "" && is_champ3_completed;
+  const boutonSubmit = document.getElementById("submit_add");
+  const champ1 = document.getElementById("title");
+  const champ2 = document.getElementById("categories");
+  const file_input = document.getElementById("file-upload");
+  const file = file_input.files[0];
+  const champsRemplis = champ1.value !== "" && champ2.value !== "" && file;
 
   if (champsRemplis) {
     boutonSubmit.classList.add("submit_button_modal_selected");
+    boutonSubmit.disabled = false;
   } else {
     boutonSubmit.classList.remove("submit_button_modal_selected");
+    boutonSubmit.disabled = true;
   }
 }
+const champ1 = document.getElementById("title");
+const champ2 = document.getElementById("categories");
+champ1.addEventListener("input", verifierChampsRequis);
+champ2.addEventListener("input", verifierChampsRequis);
