@@ -600,3 +600,12 @@ input[type="file"] {
 input:invalid ~ button {
   background-color: red;
 }
+
+.hidde {
+  display: none;
+}
+
+.image_preview {
+  width: 129px;
+  height: 169px;
+}

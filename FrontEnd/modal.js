@@ -13,14 +13,9 @@ function handle_display_modal() {
   let next_modal = document.querySelector(".add_picture");
 
   next_modal.addEventListener("click", function () {
-    console.log("coucou");
     document.getElementById("delete_modal").classList.remove("active");
     document.getElementById("add_modal").classList.add("active");
   });
-
-  // modal_triggers.forEach((trigger) =>
-  //   trigger.addEventListener("click", toggle_modal)
-  // );
 }
 
 handle_display_modal();
@@ -53,7 +48,6 @@ function handle_close_modal() {
 }
 
 function close_modal() {
-  console.log("coucou");
   document.getElementById("delete_modal").classList.remove("active");
   document.getElementById("add_modal").classList.remove("active");
 }
@@ -84,14 +78,6 @@ async function hydrate_select_category() {
 }
 hydrate_select_category();
 
-// let next_modal = document.querySelector(".add_picture");
-// let delete_modal = document.getElementById("delete_modal");
-// let add_modal = document.getElementById("add_modal");
-// next_modal.addEventListener("click", function () {
-//   delete_modal.style.display = "none";
-//   add_modal.style.display = "unset";
-// });
-
 function previewImage() {
   const file_input = document.getElementById("file-upload");
   const file = file_input.files[0];
@@ -112,8 +98,7 @@ function previewImage() {
       });
 
       image.src = imageUrl;
-      image.style.width = "129px";
-      image.style.height = "169px";
+      image.classList.add("image_preview");
     });
 
     reader.readAsDataURL(file);
@@ -122,10 +107,12 @@ function previewImage() {
 
 const button_add_picture = document.getElementById("file-upload");
 const icone = document.querySelector(".fa-image");
+const upload_button_container = document.querySelector(
+  ".upload_button_container"
+);
 button_add_picture.addEventListener("change", function () {
   previewImage();
-
-  document.querySelector(".upload_button_container").style.display = "none";
+  upload_button_container.classList.add("hidde");
 });
 
 const form = document.forms.namedItem("modal_add_image");
@@ -151,11 +138,19 @@ form.addEventListener(
       display_projects(-1, true);
       display_projects(-1, false);
       event.target.reset();
+      resetImagePreview();
     }
-    // else {
-    //   output.innerHTML =
-    //     "Erreur lors de la tentative de téléversement du fichier.";
-    // }
   },
   false
 );
+
+function resetImagePreview() {
+  const image = previewImageContainer.querySelector("img");
+  const upload_button_container = document.querySelector(
+    ".upload_button_container"
+  );
+  if (image) {
+    previewImageContainer.removeChild(image);
+    upload_button_container.classList.remove("hidde");
+  }
+}
