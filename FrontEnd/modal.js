@@ -103,6 +103,8 @@ function previewImage() {
 
     reader.readAsDataURL(file);
   }
+  is_champ3_completed = true;
+  verifierChampsRequis();
 }
 
 const button_add_picture = document.getElementById("file-upload");
@@ -139,6 +141,8 @@ form.addEventListener(
       display_projects(-1, false);
       event.target.reset();
       resetImagePreview();
+      verifierChampsRequis();
+      is_champ3_completed = false;
     }
   },
   false
@@ -152,5 +156,25 @@ function resetImagePreview() {
   if (image) {
     previewImageContainer.removeChild(image);
     upload_button_container.classList.remove("hidde");
+  }
+}
+
+const champ1 = document.getElementById("title");
+const champ2 = document.getElementById("categories");
+let is_champ3_completed = false;
+
+const boutonSubmit = document.getElementById("submit_add");
+
+champ1.addEventListener("input", verifierChampsRequis);
+champ2.addEventListener("input", verifierChampsRequis);
+
+function verifierChampsRequis() {
+  const champsRemplis =
+    champ1.value !== "" && champ2.value !== "" && is_champ3_completed;
+
+  if (champsRemplis) {
+    boutonSubmit.classList.add("submit_button_modal_selected");
+  } else {
+    boutonSubmit.classList.remove("submit_button_modal_selected");
   }
 }
