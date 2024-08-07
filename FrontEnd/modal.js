@@ -1,5 +1,5 @@
+// Affichage des modales
 function handle_display_modal() {
-  const modal_triggers = document.querySelectorAll(".modal_trigger");
   const open_modal_link = document.querySelector(".open_modal");
   open_modal_link.addEventListener("click", function () {
     document.getElementById("delete_modal").classList.add("active");
@@ -20,15 +20,15 @@ function handle_display_modal() {
 
 handle_display_modal();
 
+// Affichage des modales
 function toggle_modal() {
   const modal_container = document.querySelector(".modal_container");
   modal_container.classList.toggle("active");
 }
 
+// Fermeture des modales
 function handle_close_modal() {
-  console.log("coucou");
   const close_modal = document.querySelectorAll(".close_modal");
-  console.log(close_modal);
   close_modal.forEach((trigger) =>
     trigger.addEventListener("click", function () {
       document.getElementById("delete_modal").classList.remove("active");
@@ -47,14 +47,11 @@ function handle_close_modal() {
   });
 }
 
-function close_modal() {
-  document.getElementById("delete_modal").classList.remove("active");
-  document.getElementById("add_modal").classList.remove("active");
-}
 handle_close_modal();
 get_projects();
 display_projects(-1, true);
 
+//Suppression projet
 async function delete_project(id) {
   const delete_project = await fetch("http://localhost:5678/api/works/" + id, {
     method: "DELETE",
@@ -67,7 +64,7 @@ async function delete_project(id) {
     display_projects(-1, false);
   }
 }
-
+//Ajout des catégories dans le système de selection de la modale
 async function hydrate_select_category() {
   const select = document.getElementById("categories");
   const categories = await get_category();
@@ -78,7 +75,8 @@ async function hydrate_select_category() {
 }
 hydrate_select_category();
 
-function previewImage() {
+// Apercue de l'image envoyé
+function preview_image() {
   const file_input = document.getElementById("file-upload");
   const file = file_input.files[0];
   const image_preview_container = document.getElementById(
@@ -104,7 +102,7 @@ function previewImage() {
     reader.readAsDataURL(file);
   }
   is_champ3_completed = true;
-  verifierChampsRequis();
+  verify_required_input();
 }
 
 const button_add_picture = document.getElementById("file-upload");
@@ -113,8 +111,8 @@ const upload_button_container = document.querySelector(
   ".upload_button_container"
 );
 button_add_picture.addEventListener("change", function () {
-  previewImage();
-  verifierChampsRequis();
+  preview_image();
+  verify_required_input();
   upload_button_container.classList.add("hidde");
 });
 
@@ -141,14 +139,15 @@ form.addEventListener(
       display_projects(-1, true);
       display_projects(-1, false);
       event.target.reset();
-      resetImagePreview();
-      verifierChampsRequis();
+      reset_image_preview();
+      verify_required_input();
     }
   },
   false
 );
 
-function resetImagePreview() {
+//Suppression de l'apercie de l'image après son envoie ok
+function reset_image_preview() {
   const image = previewImageContainer.querySelector("img");
   const upload_button_container = document.querySelector(
     ".upload_button_container"
@@ -159,7 +158,8 @@ function resetImagePreview() {
   }
 }
 
-function verifierChampsRequis() {
+//Vérification des chammps requis pour envoi du formulaire
+function verify_required_input() {
   const boutonSubmit = document.getElementById("submit_add");
   const champ1 = document.getElementById("title");
   const champ2 = document.getElementById("categories");
@@ -177,5 +177,5 @@ function verifierChampsRequis() {
 }
 const champ1 = document.getElementById("title");
 const champ2 = document.getElementById("categories");
-champ1.addEventListener("input", verifierChampsRequis);
-champ2.addEventListener("input", verifierChampsRequis);
+champ1.addEventListener("input", verify_required_input);
+champ2.addEventListener("input", verify_required_input);

@@ -1,3 +1,4 @@
+//Recupération des projets
 async function get_projects() {
   const response = await fetch("http://localhost:5678/api/works");
   const projects = await response.json();
@@ -5,8 +6,8 @@ async function get_projects() {
   return projects;
 }
 
+//Affichage des projets en fonction de la catégorie
 async function display_projects(id_category, is_modal) {
-  console.log(id_category);
   let projects = await get_projects();
   if (id_category != -1) {
     projects = projects.filter(function (project) {
@@ -18,6 +19,7 @@ async function display_projects(id_category, is_modal) {
     is_modal ? ".modal_gallery" : ".gallery"
   );
 
+  //Affichage des projets
   gallery.innerHTML = "";
   for (i in projects) {
     const figure_element = document.createElement("figure");
@@ -31,7 +33,6 @@ async function display_projects(id_category, is_modal) {
 
     figure_element.appendChild(image_element);
     gallery.appendChild(figure_element);
-
     if (is_modal) {
       const modal_image_trash = document.createElement("i");
       modal_image_trash.classList.add("fa-solid", "fa-trash-can");
@@ -52,14 +53,13 @@ async function display_projects(id_category, is_modal) {
 }
 
 let category_selected = 0;
-
+// Récupération des catégories
 async function get_category() {
   const response = await fetch("http://localhost:5678/api/categories");
   const categories = await response.json();
-  console.log(categories);
   return categories;
 }
-
+//Création des boutons de filtre + Evenement au click
 async function display_categories() {
   const categories = await get_category();
   categories.unshift({ id: -1, name: "Tous" });
@@ -83,7 +83,7 @@ async function display_categories() {
     filter.appendChild(button_element);
   }
 }
-
+// Style des boutons des filtres par catégories
 function update_button_selection(event) {
   const buttons = document.querySelectorAll(".button");
   buttons.forEach((button) => button.classList.remove("button_selected"));
